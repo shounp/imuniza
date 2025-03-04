@@ -60,7 +60,7 @@
                         <option selected>Selecione um</option>
                         <option value="Preto">Preto</option>
                         <option value="Pardo">Pardo</option>
-                        <option value="Braco">Braco</option>
+                        <option value="Branco">Braco</option>
                     </select>
                 </div>
                 <div class="mb-3">

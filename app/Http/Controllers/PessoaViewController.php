@@ -14,9 +14,10 @@ class PessoaViewController extends Controller
      */
     public function index()
     {
-        $pessoas = Pessoa::get();
+        //Troquei aqui por conta de garantir que as vacinas associadas estejam disponíveis sem consultas adicionais no banco (evitando o problema de N+1)
+        $pessoas = Pessoa::with('pessoa_vacina.vacina')->get();
         $vacinas = Vacina::get();
-        return view('pessoas', compact('pessoas' , 'vacinas'));
+        return view('pessoas', compact('pessoas', 'vacinas'));
     }
 
     public function gerarPDF()

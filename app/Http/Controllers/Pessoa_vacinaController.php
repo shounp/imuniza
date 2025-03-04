@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoa_vacina;
 use Illuminate\Http\Request;
 
 class Pessoa_vacinaController extends Controller
@@ -27,7 +28,21 @@ class Pessoa_vacinaController extends Controller
      */
     public function store(Request $request, string $id)
     {
-        dd($request->all());
+        // Validação dos dados enviados pelo formulário
+        $request->validate([
+            'vacina' => 'required|exists:vacinas,id', // Garante que a vacina existe
+            'dose' => 'required|integer|min:1', // Garante que a dose é um número inteiro positivo
+        ]);
+
+        // Cria o registro na tabela pessoa_vacinas
+        Pessoa_vacina::create([
+            'pessoa_id' => $id,
+            'vacina_id' => $request->input('vacina'),
+            'dose' => $request->input('dose'), // Adiciona a dose
+        ]);
+
+        // Redireciona com mensagem de sucesso
+        return redirect()->route('site.pessoas')->with('success', 'Vacina atribuída à pessoa com sucesso!');
     }
 
     /**

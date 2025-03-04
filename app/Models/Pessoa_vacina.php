@@ -11,6 +11,7 @@ class Pessoa_vacina extends Model
     protected $fillable = [
         'pessoa_id',
         'vacina_id',
+        'dose', // Adicionado aqui
     ];
 
     public function pessoa()

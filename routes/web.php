@@ -7,6 +7,7 @@ use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\PessoaViewController;
 use App\Http\Controllers\VacinaController;
 use App\Http\Controllers\VacinaViewController;
+use App\Http\Controllers\Pessoa_vacinaController;
 use App\Models\Pessoa_vacina;
 
 /*
@@ -28,7 +29,7 @@ Route::get('/empresas', [EmpresaViewController::class, 'index'])->name('site.emp
 Route::post('/pessoa/store', [PessoaController::class, 'store'])->name('pessoa.store');
 Route::post('/pessoa/update/{id}', [PessoaController::class, 'update'])->name('pessoa.update');
 Route::delete('/pessoa/delete/{id}', [PessoaController::class, 'destroy'])->name('pessoa.delete');
-Route::delete('/pessoa/vacina/{id}', [Pessoa_vacina::class, 'store'])->name('pessoa.vacina');
+Route::post('/pessoa/vacina/{id}', [Pessoa_vacinaController::class, 'store'])->name('pessoa.vacina');
 
 Route::post('/vacina/store', [VacinaController::class, 'store'])->name('vacina.store');
 Route::post('/vacina/update/{id}', [VacinaController::class, 'update'])->name('vacina.update');
