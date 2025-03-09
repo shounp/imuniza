@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empresa;
 use App\Models\Vacina;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class VacinaViewController extends Controller
 {
@@ -15,10 +16,15 @@ class VacinaViewController extends Controller
     {
         $vacinas = Vacina::get();
         $fabricantes = Empresa::get();
+        return view('vacinas', compact('vacinas', 'fabricantes'));
+    }
 
-
-
-        return view('vacinas', compact('vacinas' , 'fabricantes'));
+    public function gerarRelatorioVacinas()
+    {
+        $vacinas = Vacina::get();
+        $fabricantes = Empresa::get();
+        $pdf = Pdf::loadView('vacina_relatorio', ['vacinas' => $vacinas, 'fabricantes' => $fabricantes]);
+        return $pdf->download('relatorio_vacinas.pdf');
     }
 
     /**

@@ -2,19 +2,21 @@
 
 @section('titulo', 'Pagina vacinas')
 
-
 @section('conteudo')
 
 <h1 class="mt-5">Lista De vacinas</h1>
+<div>
+    <a href="{{ route('relatorio.vacinas') }}" class="btn btn-warning text-white">Gerar Relatórios</a>
+</div>
 <table class="table">
     <thead>
         <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Doses</th>
-        <th scope="col">fabricante</th>
-        <th scope="col">validade</th>
-        <th scope="col">Ações</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Doses</th>
+            <th scope="col">Fabricante</th>
+            <th scope="col">Validade</th>
+            <th scope="col">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -32,13 +34,10 @@
                 <td>
                     <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#info-{{ $vacina->id }}">info</button>
                     @include('vacina.info')
-
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-{{ $vacina->id }}">Editar</button>
                     @include('vacina.update')
-
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{ $vacina->id }}">Apagar</button>
                     @include('vacina.delete')
-
                 </td>
             </tr>
         @empty
@@ -49,6 +48,6 @@
             </tr>
         @endforelse
     </tbody>
-    </table>
+</table>
 
 @endsection

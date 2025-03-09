@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EmpresaViewController extends Controller
 {
@@ -14,6 +15,13 @@ class EmpresaViewController extends Controller
     {
         $empresas = Empresa::get();
         return view('empresas', compact('empresas'));
+    }
+
+    public function gerarRelatorioEmpresas()
+    {
+        $empresas = Empresa::get();
+        $pdf = Pdf::loadView('empresa_relatorio', ['empresas' => $empresas]);
+        return $pdf->download('relatorio_empresas.pdf');
     }
 
     /**

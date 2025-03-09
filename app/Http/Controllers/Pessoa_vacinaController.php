@@ -31,14 +31,25 @@ class Pessoa_vacinaController extends Controller
         // Validação dos dados enviados pelo formulário
         $request->validate([
             'vacina' => 'required|exists:vacinas,id', // Garante que a vacina existe
-            'dose' => 'required|integer|min:1', // Garante que a dose é um número inteiro positivo
+            'dose' => [
+                'required',
+                'integer',
+                'min:1',
+                function ($attribute, $value, $fail) use ($request) {
+                    // Busca a vacina selecionada
+                    $vacina = Vacina::find($request->input('vacina'));
+                    if ($vacina && $value > $vacina->doses) {
+                        $fail("A dose informada ($value) excede o número máximo de doses da vacina ({$vacina->doses}).");
+                    }
+                },
+            ],
         ]);
 
         // Cria o registro na tabela pessoa_vacinas
         Pessoa_vacina::create([
             'pessoa_id' => $id,
             'vacina_id' => $request->input('vacina'),
-            'dose' => $request->input('dose'), // Adiciona a dose
+            'dose' => $request->input('dose'),
         ]);
 
         // Redireciona com mensagem de sucesso

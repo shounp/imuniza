@@ -6,6 +6,7 @@ use App\Models\Pessoa;
 use App\Models\Vacina;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class PessoaViewController extends Controller
 {
@@ -14,30 +15,61 @@ class PessoaViewController extends Controller
      */
     public function index()
     {
-        //Troquei aqui por conta de garantir que as vacinas associadas estejam disponíveis sem consultas adicionais no banco (evitando o problema de N+1)
-        $pessoas = Pessoa::with('pessoa_vacina.vacina')->get();
+        // Consulta SQL para ordenar pessoas por nome e vacinas por data
+        $pessoas = Pessoa::select('pessoas.*')
+            ->leftJoin('pessoa_vacinas', 'pessoas.id', '=', 'pessoa_vacinas.pessoa_id')
+            ->orderBy('pessoas.nome', 'asc')
+            ->orderBy('pessoa_vacinas.created_at', 'asc')
+            ->with(['pessoa_vacina' => function ($query) {
+                $query->orderBy('created_at', 'asc');
+            }])
+            ->distinct()
+            ->get();
+
         $vacinas = Vacina::get();
         return view('pessoas', compact('pessoas', 'vacinas'));
     }
 
-    public function gerarPDF()
+    public function gerarRelatorioPessoas()
     {
-        $pessoas = Pessoa::orderByDesc('created_at')->get();
+        $pessoas = Pessoa::select('pessoas.*')
+            ->leftJoin('pessoa_vacinas', 'pessoas.id', '=', 'pessoa_vacinas.pessoa_id')
+            ->orderBy('pessoas.nome', 'asc')
+            ->orderBy('pessoa_vacinas.created_at', 'asc')
+            ->with(['pessoa_vacina' => function ($query) {
+                $query->orderBy('created_at', 'asc');
+            }])
+            ->distinct()
+            ->get();
+        
+        $pessoas->each(function ($pessoa) {
+            $pessoa->cpf = substr($pessoa->cpf, 0, 3) . '.***.***-' . substr($pessoa->cpf, -2);
+            $pessoa->nome_mae = 'Nome ocultado (LGPD)';
+            $pessoa->email = 'E-mail ocultado (LGPD)';
+            $pessoa->endereco = [
+                'cep' => substr($pessoa->endereco['cep'], 0, 5) . '-***',
+                'country' => $pessoa->endereco['country'],
+                'city' => $pessoa->endereco['city'],
+                'state' => $pessoa->endereco['state'],
+                'district' => 'Bairro ocultado (LGPD)',
+                'street' => 'Rua ocultada (LGPD)',
+                'number' => 'Número ocultado (LGPD)',
+                'complement' => 'Complemento ocultado (LGPD)',
+            ];
+        });
 
-        $pdf = Pdf::loadView('pessoa.gerarPDF', ['pessoas' => $pessoas])->setPaper('a4', 'portrait');
-
-        return $pdf->stream('pessoas.pdf');
+        $pdf = Pdf::loadView('pessoa_relatorio', ['pessoas' => $pessoas]);
+        return $pdf->download('relatorio_pessoas.pdf');
     }
 
-    public function gerarPDFpessoa(Request $request, string $id)
+    public function gerarPDFpessoa(string $id)
     {
-        $pessoa = Pessoa::findOrFail($id);
-
-        $pdf = Pdf::loadView('pessoa.gerarPDFpessoa', ['pessoa' => $pessoa])->setPaper('a4', 'portrait');
-
-        return $pdf->stream('Dados-Pessoais.pdf');
+        $pessoa = Pessoa::with(['pessoa_vacina' => function ($query) {
+            $query->orderBy('created_at', 'asc');
+        }])->find($id);
+        $pdf = Pdf::loadView('pessoa_pdf', compact('pessoa'));
+        return $pdf->download('pessoa_' . $id . '.pdf');
     }
-
     /**
      * Show the form for creating a new resource.
      */

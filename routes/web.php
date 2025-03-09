@@ -8,18 +8,6 @@ use App\Http\Controllers\PessoaViewController;
 use App\Http\Controllers\VacinaController;
 use App\Http\Controllers\VacinaViewController;
 use App\Http\Controllers\Pessoa_vacinaController;
-use App\Models\Pessoa_vacina;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', [PessoaController::class, 'index'])->name('site.index');
 Route::get('/pessoas', [PessoaViewController::class, 'index'])->name('site.pessoas');
@@ -39,7 +27,9 @@ Route::post('/empresa/store', [EmpresaController::class, 'store'])->name('empres
 Route::post('/empresa/update/{id}', [EmpresaController::class, 'update'])->name('empresa.update');
 Route::delete('/empresa/delete/{id}', [EmpresaController::class, 'destroy'])->name('empresa.delete');
 
-Route::get('/gerar-pdf', [PessoaViewController::class, 'gerarPDF'])->name('gerador.pdf');
+// Rotas para relatórios
+Route::get('/relatorio/pessoas', [PessoaViewController::class, 'gerarRelatorioPessoas'])->name('relatorio.pessoas');
+Route::get('/relatorio/empresas', [EmpresaViewController::class, 'gerarRelatorioEmpresas'])->name('relatorio.empresas');
+Route::get('/relatorio/vacinas', [VacinaViewController::class, 'gerarRelatorioVacinas'])->name('relatorio.vacinas');
+
 Route::get('/gerar-pdf-pessoa/{id}', [PessoaViewController::class, 'gerarPDFpessoa'])->name('gerador.pessoa.pdf');
-
-
