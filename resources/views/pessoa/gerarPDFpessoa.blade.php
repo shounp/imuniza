@@ -27,6 +27,26 @@
         <h3>Cidade: {{ $pessoa->endereco['city'] }}</h3>
         <h3>Estado: {{ $pessoa->endereco['state'] }}</h3>
         <h3>País: {{ $pessoa->endereco['country'] }}</h3>
+        <hr>
+        <h2>Vacinas Tomadas</h2>
+        <table border="1" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Dose</th>
+                    <th>Data de aplicação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pessoa_vacinas as $pessoa_vacina)
+                    <tr>
+                        <td>{{ $pessoa_vacina->vacina->nome }}</td>
+                        <td>{{ $pessoa_vacina->dose }}</td>
+                        <td>{{ $pessoa_vacina->created_at }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
