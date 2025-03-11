@@ -6,7 +6,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel-{{ $pessoa->id }}">Informações</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <a href="{{ route('gerador.pessoa.pdf', $pessoa->id) }}" class="btn btn-warning text-white">gerar pdf</a>
+            <a href="{{ route('gerador.pessoa.pdf', $pessoa->id) }}" class="btn btn-warning text-white">Gerar PDF</a>
         </div>
         <div class="modal-body">
             <form action="{{ route('pessoa.update', $pessoa->id) }}" method="POST">
