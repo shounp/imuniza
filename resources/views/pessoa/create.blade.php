@@ -14,11 +14,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input required type="number" maxlength="11"  class="form-control" id="cpf" aria-describedby="emailHelp" name="cpf">
+                    <input required type="number" maxlength="11"  class="form-control" id="cpf" aria-describedby="emailHelp" name="cpf" oninput="limitarCPF(this)">
                 </div>
                 <div class="mb-3">
                     <label for="num_sus" class="form-label">NÚMERO DO SUS</label>
-                    <input required type="number" class="form-control" id="num_sus" aria-describedby="emailHelp" name="num_sus">
+                    <input required type="number" class="form-control" id="num_sus" aria-describedby="emailHelp" name="num_sus" oninput="limitarSUS(this)">
                 </div>
                 <div class="mb-3">
                     <label for="data_nascimento" class="form-label">DATA DE NASCIMENTO</label>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">CEP</label>
-                    <input required type="number" maxlength="8" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[cep]">
+                    <input required type="number" maxlength="8" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[cep]" oninput="limitarCEP(this)">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">PAIS</label>

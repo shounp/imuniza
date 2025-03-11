@@ -18,7 +18,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="telefone" class="form-label">TELEFONE</label>
-                    <input required type="number" class="form-control" id="telefone" aria-describedby="emailHelp" name="telefone" oninput="limitarTELEFONE(this)">
+                    <input required type="number" class="form-control" id="telefone" aria-describedby="emailHelp" name="telefone" oninput="limitarCPF(this)">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">EMAIL</label>

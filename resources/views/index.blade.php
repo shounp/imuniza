@@ -57,9 +57,9 @@
                 input.value = input.value.slice(0, 11);
             }
         }
-        function limitarTELEFONE(input) {
-            if (input.value.length > 11) {
-                input.value = input.value.slice(0, 11);
+        function limitarSUS(input) {
+            if (input.value.length > 15) {
+                input.value = input.value.slice(0, 15);
             }
         }
         function limitarCEP(input) {
