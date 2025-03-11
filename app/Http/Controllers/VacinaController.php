@@ -70,7 +70,7 @@ class VacinaController extends Controller
             $vacina->update($request->all());
         });
 
-        return redirect()->route('site.index')->with('success', 'Vacina atualizada com sucesso');
+        return redirect()->route('site.vacinas')->with('success', 'Vacina atualizada com sucesso');
     }
 
     /**
