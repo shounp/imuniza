@@ -28,10 +28,14 @@
                 <div class="mb-3">
                     <label for="fabricante_id" class="form-label">FABRICANTE</label>
                     <select required class="form-select" aria-label="Default select example" name="fabricante_id">
-                        <option selected>--- Selecione um Fabricante ---</option>
-                        @isset($empresas)
-                            @foreach ($empresas as $empresa)
+                        <option>--- Selecione um Fabricante ---</option>
+                        @isset($fabricantes)
+                            @foreach ($fabricantes as $empresa)
+                            @if ($empresa->id == $vacina->fabricante_id)
+                                <option selected value="{{ $empresa->id }}">{{ $empresa->nome_empresa }}</option>
+                            @else
                                 <option value="{{ $empresa->id }}">{{ $empresa->nome_empresa }}</option>
+                            @endif
                             @endforeach
                         @endisset
                       </select>
