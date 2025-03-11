@@ -15,7 +15,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="lote" class="form-label">LOTE</label>
-                    <input type="number" disabled value={{ $vacina->lote }} maxlength="11"  class="form-control" id="lote" aria-describedby="emailHelp" name="lote">
+                    <input type="text" disabled value={{ $vacina->lote }} maxlength="11"  class="form-control" id="lote" aria-describedby="emailHelp" name="lote">
                 </div>
                 <div class="mb-3">
                     <label for="validade" class="form-label">DATA DE VALIDADE</label>
@@ -28,16 +28,17 @@
                 <div class="mb-3">
                     <label for="fabricante_id" class="form-label">FABRICANTE</label>
                     <select disabled class="form-select" aria-label="Default select example" name="fabricante_id">
-                        <option selected>--- Selecione um Fabricante ---</option>
-                        @isset($empresas)
-                            @foreach ($empresas as $empresa)
-                                <option value="{{ $empresa->id }}">{{ $empresa->nome_empresa }}</option>
+                        <option >--- Selecione um Fabricante ---</option>
+                        @isset($fabricantes)
+                            @foreach ($fabricantes as $empresa)
+                                @if ($empresa->id == $vacina->fabricante_id)
+                                    <option selected value="{{ $empresa->id }}">{{ $empresa->nome_empresa }}</option>
+                                @endif
                             @endforeach
                         @endisset
                       </select>
                 </div>
                 <div class="modal-footer"></div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fechar</button>
             </form>
         </div>

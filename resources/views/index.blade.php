@@ -46,4 +46,28 @@
     @include('empresa.create')
     @include('vacina.create')
 
+    <script>
+        function limitarCNPJ(input) {
+            if (input.value.length > 14) {
+                input.value = input.value.slice(0, 14);
+            }
+        }
+        function limitarCPF(input) {
+            if (input.value.length > 11) {
+                input.value = input.value.slice(0, 11);
+            }
+        }
+        function limitarTELEFONE(input) {
+            if (input.value.length > 11) {
+                input.value = input.value.slice(0, 11);
+            }
+        }
+        function limitarCEP(input) {
+            if (input.value.length > 8) {
+                input.value = input.value.slice(0, 8);
+            }
+        }
+
+        </script>
+
 @endsection

@@ -11,23 +11,23 @@
                 @csrf
                 <div class="mb-3">
                   <label for="nome" class="form-label">NOME</label>
-                  <input type="text" value={{ $vacina->nome }} maxlength="50" class="form-control" id="nome" aria-describedby="emailHelp" name="nome">
+                  <input required type="text" value={{ $vacina->nome }} maxlength="50" class="form-control" id="nome" aria-describedby="emailHelp" name="nome">
                 </div>
                 <div class="mb-3">
                     <label for="lote" class="form-label">LOTE</label>
-                    <input type="number" value={{ $vacina->lote }} maxlength="11"  class="form-control" id="lote" aria-describedby="emailHelp" name="lote">
+                    <input required type="text" value={{ $vacina->lote }} maxlength="11"  class="form-control" id="lote" aria-describedby="emailHelp" name="lote">
                 </div>
                 <div class="mb-3">
                     <label for="validade" class="form-label">DATA DE VALIDADE</label>
-                    <input type="date" value={{ $vacina->validade }} class="form-control" id="validade" aria-describedby="emailHelp" name="validade">
+                    <input required type="date" value={{ $vacina->validade }} class="form-control" id="validade" aria-describedby="emailHelp" name="validade">
                 </div>
                 <div class="mb-3">
                     <label for="doses" class="form-label">DOSES</label>
-                    <input type="text" value={{ $vacina->doses }} maxlength="50" class="form-control" id="doses" aria-describedby="emailHelp" name="doses">
+                    <input required type="text" value={{ $vacina->doses }} maxlength="50" class="form-control" id="doses" aria-describedby="emailHelp" name="doses">
                 </div>
                 <div class="mb-3">
                     <label for="fabricante_id" class="form-label">FABRICANTE</label>
-                    <select class="form-select" aria-label="Default select example" name="fabricante_id">
+                    <select required class="form-select" aria-label="Default select example" name="fabricante_id">
                         <option selected>--- Selecione um Fabricante ---</option>
                         @isset($empresas)
                             @foreach ($empresas as $empresa)

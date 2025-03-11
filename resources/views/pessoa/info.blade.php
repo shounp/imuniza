@@ -102,11 +102,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="endereco" class="form-label">COMPLEMENTO</label>
-                        <input value={{ $pessoa->endereco['complement'] }} disabled type="text" maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[complement]">
+                        <input value="{{ $pessoa->endereco['complement'] }}" disabled type="text" maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[complement]">
                     </div>
 
                 <div class="modal-footer"></div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fechar</button>
             </form>
         </div>

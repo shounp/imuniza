@@ -29,7 +29,7 @@ class EmpresaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EmpresaRequest $request)
+    public function store(Request $request)
     {
         \DB::transaction(function () use ($request) {
 
@@ -63,7 +63,7 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EmpresaRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
         \DB::transaction(function () use ($request, $id) {
             $empresa = Empresa::findOrFail($id);

@@ -10,51 +10,51 @@
                 @csrf
                 <div class="mb-3">
                   <label for="nome" class="form-label">NOME</label>
-                  <input type="text" value={{ $empresa->nome_empresa }} maxlength="50" class="form-control" id="nome" aria-describedby="emailHelp" name="nome_empresa">
+                  <input required type="text" value={{ $empresa->nome_empresa }} maxlength="50" class="form-control" id="nome" aria-describedby="emailHelp" name="nome_empresa">
                 </div>
                 <div class="mb-3">
                     <label for="cnpj" class="form-label">CNPJ</label>
-                    <input type="number" value={{ $empresa->cnpj }} maxlength="11"  class="form-control" id="cnpj" aria-describedby="emailHelp" name="cnpj">
+                    <input required type="number" value={{ $empresa->cnpj }} maxlength="11"  class="form-control" id="cnpj" aria-describedby="emailHelp" name="cnpj">
                 </div>
                 <div class="mb-3">
                     <label for="telefone" class="form-label">TELEFONE</label>
-                    <input type="number" value={{ $empresa->telefone }} class="form-control" id="telefone" aria-describedby="emailHelp" name="telefone">
+                    <input required type="number" value={{ $empresa->telefone }} class="form-control" id="telefone" aria-describedby="emailHelp" name="telefone">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">EMAIL</label>
-                    <input type="text" value={{ $empresa->email }} class="form-control" id="data_nascimento" aria-describedby="emailHelp" name="email">
+                    <input required type="text" value={{ $empresa->email }} class="form-control" id="data_nascimento" aria-describedby="emailHelp" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">CEP</label>
-                    <input type="number" value={{ $empresa->endereco['cep'] }} maxlength="8" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[cep]">
+                    <input required type="number" value={{ $empresa->endereco['cep'] }} maxlength="8" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[cep]">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">PAIS</label>
-                    <input type="text" value={{ $empresa->endereco['country'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[country]">
+                    <input required type="text" value={{ $empresa->endereco['country'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[country]">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">CIDADE</label>
-                    <input type="text" value={{ $empresa->endereco['city'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[city]">
+                    <input required type="text" value={{ $empresa->endereco['city'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[city]">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">ESTADO</label>
-                    <input type="text" value={{ $empresa->endereco['state'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[state]">
+                    <input required type="text" value={{ $empresa->endereco['state'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[state]">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">BAIRRO</label>
-                    <input type="text" value={{ $empresa->endereco['district'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[district]">
+                    <input required type="text" value={{ $empresa->endereco['district'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[district]">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">RUA</label>
-                    <input type="text" value={{ $empresa->endereco['street'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[street]">
+                    <input required type="text" value={{ $empresa->endereco['street'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[street]">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">NUMERO</label>
-                    <input type="number" value={{ $empresa->endereco['number'] }} maxlength="5" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[number]">
+                    <input required type="number" value={{ $empresa->endereco['number'] }} maxlength="5" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[number]">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">COMPLEMENTO</label>
-                    <input type="text" value={{ $empresa->endereco['complement'] }} maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[complement]">
+                    <input type="text" value="{{ $empresa->endereco['complement'] }}" maxlength="50" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[complement]">
                 </div>
 
                 <div class="modal-footer"></div>
