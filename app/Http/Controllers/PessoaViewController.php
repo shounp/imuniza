@@ -41,7 +41,7 @@ class PessoaViewController extends Controller
             }])
             ->distinct()
             ->get();
-        
+
         $pessoas->each(function ($pessoa) {
             $pessoa->cpf = substr($pessoa->cpf, 0, 3) . '.***.***-' . substr($pessoa->cpf, -2);
             $pessoa->nome_mae = 'Nome ocultado (LGPD)';
@@ -64,10 +64,32 @@ class PessoaViewController extends Controller
 
     public function gerarPDFpessoa(string $id)
     {
+
+        $pessoa_vacinas = Pessoa::find($id)->pessoa_vacina;
+
+        $vacinas = [];
+
+        foreach ($pessoa_vacinas as $pessoa_vacina) {
+            $vacinas[] = Vacina::where('id', $pessoa_vacina->vacina_id)->first(); // ✅ Adiciona ao array
+        }
+
         $pessoa = Pessoa::with(['pessoa_vacina' => function ($query) {
             $query->orderBy('created_at', 'asc');
         }])->find($id);
-        $pdf = Pdf::loadView('pessoa_pdf', compact('pessoa'));
+        $pessoa->cpf = substr($pessoa->cpf, 0, 3) . '.***.***-' . substr($pessoa->cpf, -2);
+            $pessoa->nome_mae = 'Nome ocultado (LGPD)';
+            $pessoa->email = 'E-mail ocultado (LGPD)';
+            $pessoa->endereco = [
+                'cep' => substr($pessoa->endereco['cep'], 0, 5) . '-***',
+                'country' => $pessoa->endereco['country'],
+                'city' => $pessoa->endereco['city'],
+                'state' => $pessoa->endereco['state'],
+                'district' => 'Bairro ocultado (LGPD)',
+                'street' => 'Rua ocultada (LGPD)',
+                'number' => 'Número ocultado (LGPD)',
+                'complement' => 'Complemento ocultado (LGPD)',
+            ];
+        $pdf = Pdf::loadView('pessoa.gerarPDFpessoa', compact('pessoa', 'pessoa_vacinas', 'vacinas'));
         return $pdf->download('pessoa_' . $id . '.pdf');
     }
     /**
