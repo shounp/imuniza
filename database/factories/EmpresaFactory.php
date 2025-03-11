@@ -18,7 +18,7 @@ class EmpresaFactory extends Factory
             'telefone' => $this->faker->numerify('(##) #####-####'),
             'email' => $this->faker->unique(true, 100000)->safeEmail(),
             'endereco_id' => Endereco::factory(),
-            'contador_empresas' => 0,
+            'contador_empresas' => 10,
         ];
     }
 }

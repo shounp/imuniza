@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pessoa_vacina;
+use App\Models\Vacina;
 use Illuminate\Http\Request;
 
 class Pessoa_vacinaController extends Controller

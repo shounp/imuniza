@@ -6,6 +6,7 @@ use App\Models\Empresa;
 use Illuminate\Http\Request;
 use App\Models\Pessoa;
 use App\Models\Endereco;
+use App\Models\Pessoa_vacina;
 use App\Models\Vacina;
 
 class PessoaController extends Controller
@@ -83,9 +84,18 @@ class PessoaController extends Controller
      */
     public function destroy(string $id)
     {
-        $pessoa = pessoa::find($id);
-        $pessoa->endereco->delete();
+        $pessoa = Pessoa::findOrFail($id);
+        $pessoaVacinas = Pessoa_vacina::where('pessoa_id', $id)->get();
+
+
+        foreach ($pessoaVacinas as $pessoaVacina) {
+            $pessoaVacina->delete();
+        }
+
         $pessoa->delete();
+
+        $pessoa->endereco->delete();
+
 
         \DB::table('pessoas')->decrement('contador_pessoas');
 

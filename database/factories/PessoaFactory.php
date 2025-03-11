@@ -24,7 +24,8 @@ class PessoaFactory extends Factory
             'raca_cor' => $this->faker->randomElement(['Branca', 'Preta', 'Parda', 'Amarela', 'Indígena']),
             'plano_saude' => $this->faker->randomElement(['Sim', 'Não']),
             'endereco_id' => Endereco::factory(),
-            'contador_pessoas' => 0,
+            // 'contador_pessoas' => $this->count(50),
+            'contador_pessoas' => 50,
         ];
     }
 }

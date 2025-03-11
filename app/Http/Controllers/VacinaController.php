@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empresa;
+use App\Models\Pessoa_vacina;
 use App\Models\Vacina;
 use Illuminate\Http\Request;
 
@@ -78,9 +79,17 @@ class VacinaController extends Controller
     public function destroy(string $id)
     {
         $vacina = Vacina::findOrFail($id);
+
+        $vacinaPessoas = Pessoa_vacina::where('vacina_id', $id)->get();
+
+        foreach ($vacinaPessoas as $vacinaPessoa) {
+            $vacinaPessoa->delete();
+        }
+
         $vacina->delete();
+
         \DB::table('vacinas')->increment('contador_vacinas');
 
-        return redirect()->route('site.index')->with('success', 'Vacina deletada com sucesso');
+        return redirect()->route('site.vacinas')->with('success', 'Vacina deletada com sucesso');
     }
 }

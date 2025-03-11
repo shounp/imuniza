@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmpresaRequest;
 use App\Models\Empresa;
 use App\Models\Endereco;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class EmpresaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EmpresaRequest $request)
     {
         \DB::transaction(function () use ($request) {
 
@@ -62,7 +63,7 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EmpresaRequest $request, string $id)
     {
         \DB::transaction(function () use ($request, $id) {
             $empresa = Empresa::findOrFail($id);
@@ -84,8 +85,8 @@ class EmpresaController extends Controller
     {
         \DB::transaction(function () use ($id) {
             $empresa = Empresa::findOrFail($id);
-            $empresa->endereco->delete();
             $empresa->delete();
+            $empresa->endereco->delete();
 
         \DB::table('empresas')->decrement('contador_empresas');
         });

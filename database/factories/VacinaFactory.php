@@ -18,7 +18,7 @@ class VacinaFactory extends Factory
             'validade' => $this->faker->date('Y-m-d', '+2 years'),
             'doses' => $this->faker->numberBetween(1, 3),
             'fabricante_id' => Empresa::factory(),
-            'contador_vacinas' => 0,
+            'contador_vacinas' => 20,
         ];
     }
 }

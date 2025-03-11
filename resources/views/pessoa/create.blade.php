@@ -49,9 +49,9 @@
                     <label for="escolaridade" class="form-label">ESCOLARIDADE</label>
                     <select class="form-select" aria-label="Default select example" name="escolaridade">
                         <option selected>Selecione um</option>
-                        <option value="casado">Fudamental</option>
-                        <option value="solteiro">Médio</option>
-                        <option value="divorciado">Superior</option>
+                        <option value="Fudamental">Fudamental</option>
+                        <option value="Médio">Médio</option>
+                        <option value="Superior">Superior</option>
                     </select>
                 </div>
                 <div class="mb-3">
