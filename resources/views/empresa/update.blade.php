@@ -14,11 +14,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="cnpj" class="form-label">CNPJ</label>
-                    <input required type="number" value={{ $empresa->cnpj }} maxlength="11"  class="form-control" id="cnpj" aria-describedby="emailHelp" name="cnpj">
+                    <input required type="number" value={{ $empresa->cnpj }} maxlength="11"  class="form-control" id="cnpj" aria-describedby="emailHelp" name="cnpj" oninput="limitarCNPJ(this)">
                 </div>
                 <div class="mb-3">
                     <label for="telefone" class="form-label">TELEFONE</label>
-                    <input required type="number" value={{ $empresa->telefone }} class="form-control" id="telefone" aria-describedby="emailHelp" name="telefone">
+                    <input required type="number" value={{ $empresa->telefone }} class="form-control" id="telefone" aria-describedby="emailHelp" name="telefone" oninput="limitarCPF(this)">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">EMAIL</label>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">CEP</label>
-                    <input required type="number" value={{ $empresa->endereco['cep'] }} maxlength="8" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[cep]">
+                    <input required type="number" value={{ $empresa->endereco['cep'] }} maxlength="8" class="form-control" id="endereco" aria-describedby="emailHelp" name="endereco[cep]" oninput="limitarCEP(this)">
                 </div>
                 <div class="mb-3">
                     <label for="endereco" class="form-label">PAIS</label>
