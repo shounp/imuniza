@@ -17,7 +17,7 @@ class PessoaViewController extends Controller
     {
         // Consulta SQL para ordenar pessoas por nome e vacinas por data
         $pessoas = Pessoa::select('pessoas.*')
-            ->leftJoin('pessoa_vacinas', 'pessoas.id', '=', 'pessoa_vacinas.pessoa_id')
+            ->leftJoin('pessoa_vacinas', 'pessoas.cpf', '=', 'pessoa_vacinas.pessoa_id')
             ->orderBy('pessoas.nome', 'asc')
             ->orderBy('pessoa_vacinas.created_at', 'asc')
             ->with(['pessoa_vacina' => function ($query) {
@@ -33,7 +33,7 @@ class PessoaViewController extends Controller
     public function gerarRelatorioPessoas()
     {
         $pessoas = Pessoa::select('pessoas.*')
-            ->leftJoin('pessoa_vacinas', 'pessoas.id', '=', 'pessoa_vacinas.pessoa_id')
+            ->leftJoin('pessoa_vacinas', 'pessoas.cpf', '=', 'pessoa_vacinas.pessoa_id')
             ->orderBy('pessoas.nome', 'asc')
             ->orderBy('pessoa_vacinas.created_at', 'asc')
             ->with(['pessoa_vacina' => function ($query) {

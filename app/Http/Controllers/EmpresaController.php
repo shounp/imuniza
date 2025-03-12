@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmpresaRequest;
 use App\Models\Empresa;
 use App\Models\Endereco;
+use App\Models\Pessoa_vacina;
+use App\Models\Vacina;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -85,6 +87,13 @@ class EmpresaController extends Controller
     {
         \DB::transaction(function () use ($id) {
             $empresa = Empresa::findOrFail($id);
+
+            $vacinas = Vacina::where('fabricante_id', $id)->get();
+
+            foreach ($vacinas as $vacina) {
+                Pessoa_vacina::where('vacina_id', $vacina->id)->delete();
+                $vacina->delete();
+            }
             $empresa->delete();
             $empresa->endereco->delete();
 

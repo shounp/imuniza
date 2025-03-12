@@ -45,7 +45,6 @@ class Pessoa_vacinaController extends Controller
                 },
             ],
         ]);
-
         // Cria o registro na tabela pessoa_vacinas
         Pessoa_vacina::create([
             'pessoa_id' => $id,

@@ -31,7 +31,7 @@
                         <option value="" disabled selected>--- Selecione um Fabricante ---</option>
                         @isset($empresas)
                             @foreach ($empresas as $empresa)
-                                <option value="{{ $empresa->id }}">{{ $empresa->nome_empresa }}</option>
+                                <option value="{{ $empresa->cnpj }}">{{ $empresa->nome_empresa }}</option>
                             @endforeach
                         @endisset
                       </select>

@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('empresas', function (Blueprint $table) {
-            $table->id();
+            $table->string('cnpj')->unique()->primary();
             $table->string('nome_empresa');
-            $table->string('cnpj');
             $table->string('telefone');
             $table->string('email');
             $table->foreignId('endereco_id')->onDelete('cascade')->constrained('enderecos');

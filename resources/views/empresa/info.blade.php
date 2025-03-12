@@ -1,4 +1,4 @@
-<div class="modal fade" id="info-{{ $empresa->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="info-{{ $empresa->cnpj }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -6,7 +6,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('empresa.update', $empresa->id) }}" method="POST">
+            <form action="{{ route('empresa.update', $empresa->cnpj) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="nome" class="form-label">NOME</label>

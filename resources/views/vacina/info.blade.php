@@ -31,8 +31,8 @@
                         <option >--- Selecione um Fabricante ---</option>
                         @isset($fabricantes)
                             @foreach ($fabricantes as $empresa)
-                                @if ($empresa->id == $vacina->fabricante_id)
-                                    <option selected value="{{ $empresa->id }}">{{ $empresa->nome_empresa }}</option>
+                                @if ($empresa->cnpj == $vacina->fabricante_id)
+                                    <option selected value="{{ $empresa->cnpj }}">{{ $empresa->nome_empresa }}</option>
                                 @endif
                             @endforeach
                         @endisset

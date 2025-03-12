@@ -9,6 +9,10 @@ use App\Models\Pessoa_vacina;
 
 class Pessoa extends Model
 {
+    protected $primaryKey = 'cpf';
+    public $incrementing = false; // Como CPF não é um número autoincremental
+    protected $keyType = 'string';
+
     use HasFactory;
     protected $fillable = [
         'nome',
@@ -32,6 +36,6 @@ class Pessoa extends Model
 
     public function pessoa_vacina()
     {
-        return $this->hasMany(Pessoa_vacina::class);
+        return $this->hasMany(Pessoa_vacina::class, 'pessoa_id', 'cpf');
     }
 }

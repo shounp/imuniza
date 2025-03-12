@@ -18,7 +18,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="num_sus" class="form-label">NÚMERO DO SUS</label>
-                    <input required type="number" class="form-control" id="num_sus" aria-describedby="emailHelp" name="num_sus" oninput="limitarSUS(this)">
+                    <input required type="string" class="form-control" id="num_sus" aria-describedby="emailHelp" name="num_sus" oninput="limitarSUS(this)">
                 </div>
                 <div class="mb-3">
                     <label for="data_nascimento" class="form-label">DATA DE NASCIMENTO</label>

@@ -1,12 +1,12 @@
-<div class="modal fade" id="edit-{{ $pessoa->id }}" tabindex="-1" aria-labelledby="exampleModalLabel-{{ $pessoa->id }}" aria-hidden="true">
+<div class="modal fade" id="edit-{{ $pessoa->cpf }}" tabindex="-1" aria-labelledby="exampleModalLabel-{{ $pessoa->cpf }}" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel-{{ $pessoa->id }}">Editar</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel-{{ $pessoa->cpf }}">Editar</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('pessoa.update', $pessoa->id) }}" method="POST">
+            <form action="{{ route('pessoa.update', $pessoa->cpf) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="nome" class="form-label">NOME</label>
