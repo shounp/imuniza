@@ -19,7 +19,7 @@
         <tbody>
             @forelse ($empresas as $empresa)
                 <tr style="text-align: center">
-                    <th style="border: 1px solid #9494949a; border-top: none;">{{ $empresa->id }}</th>
+                    <th style="border: 1px solid #9494949a; border-top: none;">{{ $empresa->cnpj }}</th>
                     <td style="border: 1px solid #9494949a; border-top: none;">{{ $empresa->nome_empresa }}</td>
                     <td style="border: 1px solid #9494949a; border-top: none;">{{ $empresa->cnpj }}</td>
                     <td style="border: 1px solid #9494949a; border-top: none;">{{ $empresa->telefone }}</td>

@@ -8,6 +8,10 @@ use App\Models\Vacina;
 
 class Empresa extends Model
 {
+    protected $primaryKey = 'cnpj';
+    public $incrementing = false; // Como CPF não é um número autoincremental
+    protected $keyType = 'string';
+
     use HasFactory;
     protected $fillable = [
         'nome_empresa',

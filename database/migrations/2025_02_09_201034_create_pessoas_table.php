@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pessoas', function (Blueprint $table) {
-            $table->id();
+            $table->string('cpf')->unique()->primary();
             $table->string('nome');
-            $table->string('cpf');
-            $table->integer('num_sus');
+            $table->string('num_sus');
             $table->date('data_nascimento');
             $table->string('nome_mae');
             $table->string('sexo');

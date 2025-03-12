@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('pessoa_vacinas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pessoa_id')->onDelete('cascade')->constrained('pessoas');
             $table->foreignId('vacina_id')->onDelete('cascade')->constrained('vacinas');
+            $table->string('pessoa_id');
+            $table->foreign('pessoa_id')->references('cpf')->on('pessoas')->onDelete('cascade');
+            $table->integer('dose');
             $table->timestamps();
         });
     }

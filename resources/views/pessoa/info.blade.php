@@ -1,15 +1,15 @@
-<div class="modal fade" id="info-{{ $pessoa->id }}" tabindex="-1" aria-labelledby="exampleModalLabel-{{ $pessoa->id }}" aria-hidden="true">
+<div class="modal fade" id="info-{{ $pessoa->cpf }}" tabindex="-1" aria-labelledby="exampleModalLabel-{{ $pessoa->cpf }}" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header d-flex flex-column align-items-start">
             <div class="d-flex justify-content-between w-100">
-                <h1 class="modal-title fs-5" id="exampleModalLabel-{{ $pessoa->id }}">Informações</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel-{{ $pessoa->cpf }}">Informações</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <a href="{{ route('gerador.pessoa.pdf', $pessoa->id) }}" class="btn btn-warning text-white">Gerar PDF</a>
+            <a href="{{ route('gerador.pessoa.pdf', $pessoa->cpf) }}" class="btn btn-warning text-white">gerar pdf</a>
         </div>
         <div class="modal-body">
-            <form action="{{ route('pessoa.update', $pessoa->id) }}" method="POST">
+            <form action="{{ route('pessoa.update', $pessoa->cpf) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="nome" class="form-label">NOME</label>

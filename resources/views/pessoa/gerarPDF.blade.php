@@ -20,7 +20,7 @@
         <tbody>
             @forelse ($pessoas as $pessoa)
                 <tr style="text-align: center">
-                    <th style="border: 1px solid #9494949a; border-top: none;">{{ $pessoa->id }}</th>
+                    <th style="border: 1px solid #9494949a; border-top: none;">{{ $pessoa->cpf }}</th>
                     <td style="border: 1px solid #9494949a; border-top: none;">{{ $pessoa->nome }}</td>
                     <td style="border: 1px solid #9494949a; border-top: none;">{{ $pessoa->cpf }}</td>
                     <td style="border: 1px solid #9494949a; border-top: none;">{{ $pessoa->data_nascimento }}</td>

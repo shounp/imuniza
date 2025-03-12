@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('vacinas', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->foreignId('fabricante_id')->onDelete('cascade')->constrained('empresas');
+            $table->string('fabricante_id');
+            $table->foreign('fabricante_id')->references('cnpj')->on('empresas')->onDelete('cascade');
             $table->string('lote');
             $table->date('validade');
             $table->integer('doses');
